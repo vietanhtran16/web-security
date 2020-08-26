@@ -1,0 +1,48 @@
+import React, {useState} from 'react';
+import { Container, AppBar, Toolbar } from '@material-ui/core';
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import axios from "axios";
+
+const containerStyle = {marginTop: "20px", display: "flex", flexDirection: "column"};
+
+function App() {
+  const [content, setContent] = useState("Hello there");
+  const [response, setResponse] = useState("");
+  const handleSubmit = async (content) => {
+    const result = await axios.post("http://localhost:8000/hello",
+        { content }
+    );
+    setResponse(result.data.content);
+    console.log("result", result);
+  };
+  return (
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6">
+            Origin Site
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Container style={containerStyle} maxWidth="sm">
+        <TextField
+          id="outlined-multiline-static"
+          label="Say hi"
+          multiline
+          rows={4}
+          value={content}
+          variant="outlined"
+          onChange={
+            (event) => setContent(event.target.value)
+          }
+        />
+        <Button onClick={() => handleSubmit(content)}>Submit</Button>
+        <p>{response}</p>
+      </Container>
+    </>
+  );
+}
+
+export default App;
