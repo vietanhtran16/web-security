@@ -11,20 +11,10 @@ function App() {
   const [content, setContent] = useState("Hello there");
   const [response, setResponse] = useState("");
   const handleSubmit = async (content) => {
-    const result = await axios.post("http://localhost:8000/hello",
-        { content }
-    );
-    setResponse(result.data.content);
-    console.log("result", result);
+    const result = await axios.get(`http://localhost:8000/search?key=${content}`);
+    setResponse(result.data);
   };
-
-  useEffect( () => {
-    (async () => {
-      const hello = await axios.get("http://localhost:8000/hello");
-      console.log("hello", hello);
-      setResponse(hello.data)
-    })()
-  }, []);
+  
   return (
     <>
       <AppBar position="static">
@@ -47,7 +37,7 @@ function App() {
           }
         />
         <Button onClick={() => handleSubmit(content)}>Submit</Button>
-        {response}
+        <div dangerouslySetInnerHTML={{__html: response}}></div>
       </Container>
     </>
   );

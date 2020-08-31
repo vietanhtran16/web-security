@@ -18,10 +18,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
-  console.log("req.query", req.query.item);
+  console.log("req.query", req.query.key);
   const cspHeader = "default-src 'self'";
   res.setHeader('Content-Security-Policy', cspHeader);
-  res.status(400).send(req.query.item);
+  res.status(200).send(req.query.key);
 });
 
 app.listen(port, () => {
