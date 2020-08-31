@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Container, AppBar, Toolbar } from '@material-ui/core';
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -17,6 +17,14 @@ function App() {
     setResponse(result.data.content);
     console.log("result", result);
   };
+
+  useEffect( () => {
+    (async () => {
+      const hello = await axios.get("http://localhost:8000/hello");
+      console.log("hello", hello);
+      setResponse(hello.data)
+    })()
+  }, []);
   return (
     <>
       <AppBar position="static">
@@ -39,7 +47,7 @@ function App() {
           }
         />
         <Button onClick={() => handleSubmit(content)}>Submit</Button>
-        <p>{response}</p>
+        {response}
       </Container>
     </>
   );

@@ -17,8 +17,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
-app.post('/hello', (req, res) => {
-  res.status(201).send(req.body);
+app.get('/search', (req, res) => {
+  console.log("req.query", req.query.item);
+  const cspHeader = "default-src 'self'";
+  res.setHeader('Content-Security-Policy', cspHeader);
+  res.status(400).send(req.query.item);
 });
 
 app.listen(port, () => {
