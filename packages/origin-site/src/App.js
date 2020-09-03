@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Container, AppBar, Toolbar } from '@material-ui/core';
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -8,7 +8,7 @@ import axios from "axios";
 const containerStyle = {marginTop: "20px", display: "flex", flexDirection: "column"};
 
 function App() {
-  const [content, setContent] = useState("Hello there");
+  const [content, setContent] = useState("<img src=a onerror=alert(document.cookie) />");
   const [response, setResponse] = useState("");
   const handleSubmit = async (content) => {
     const result = await axios.get(`http://localhost:8000/search?key=${content}`);
