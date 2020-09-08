@@ -1,1 +1,1 @@
-alert("I'm a very safe inline script");
+alert("I'm a very safe external script");
