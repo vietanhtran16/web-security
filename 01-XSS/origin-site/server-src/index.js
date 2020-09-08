@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 })
 
 app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'");
+  res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' http://localhost:5000 'nonce-1234'; style-src 'self' 'unsafe-inline'");
   next();
 });
 
