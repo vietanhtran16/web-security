@@ -1,0 +1,1 @@
+Examples of XSS and how to protect with CSP
