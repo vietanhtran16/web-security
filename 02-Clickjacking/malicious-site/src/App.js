@@ -4,6 +4,10 @@ import Typography from "@material-ui/core/Typography";
 
 const containerStyle = {marginTop: "20px", display: "flex", flexDirection: "column"};
 
+const handleOnClick = (event) => {
+  alert("Coronavirus is being downloaded");
+};
+
 function App() {
   return (
     <>
@@ -16,7 +20,9 @@ function App() {
       </AppBar>
       <Container style={containerStyle} maxWidth="sm">
         <div>Hello</div>
-        <iframe src="http://localhost:5000/" title="Hello"/>
+        <button onClick={handleOnClick}>
+          <iframe src="http://localhost:5000/" title="Hello"/>
+        </button>
       </Container>
     </>
   );
