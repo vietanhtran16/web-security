@@ -6,7 +6,7 @@ const port = 5000;
 
 app.use((req, res, next) => {
   res.setHeader("Content-Security-Policy", "frame-ancestors 'self'");
-  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
   next();
 });
 
