@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Hey</h1>
+    <p>I very evil</p>
+    <script>
+      function evilThing() {
+        if(window.opener) {
+            setTimeout(function() {
+                window.opener.location = "https://vietanhtran.tech/";
+                alert("Check out my blog on the other tab 👈");
+            }, 2000)
+        }
+      }
+      evilThing();
+    </script>
+  </body>
+</html>
